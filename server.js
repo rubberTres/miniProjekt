@@ -43,7 +43,9 @@ app.post("/register", function (req, res) {
     }
 })
 
-
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname + '/static/pages/main.html'))
+})
 
 app.get("/:id", function (req, res) {
     switch (req.params.id) {
@@ -135,7 +137,7 @@ app.get("/:id", function (req, res) {
 
             break
         default:
-            res.sendFile(path.join(__dirname + '/static/pages/main.html'))
+            res.sendFile(path.join(__dirname + '/static/pages/none.html'))
             break
     }
 })
