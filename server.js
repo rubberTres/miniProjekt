@@ -135,7 +135,7 @@ app.get("/:id", function (req, res) {
 
             break
         default:
-            res.sendFile(path.join(__dirname + '/static/pages/none.html'))
+            res.sendFile(path.join(__dirname + '/static/pages/main.html'))
             break
     }
 })
