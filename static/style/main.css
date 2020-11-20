@@ -1,0 +1,46 @@
+body{
+    background:#303030;
+}
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+.top{
+    height:200px;
+    background:blue;
+    display:flex;
+    width:100vw;
+    justify-content: space-around;
+    align-items: center;
+    font-size:50px;
+}
+.topNonLogged{
+    height:200px;
+    background:red;
+    display:flex;
+    width:100vw;
+    justify-content: space-around;
+    align-items: center;
+    font-size:50px;
+}
+.sgs{
+    height:100px;
+    background:pink;
+    display:flex;
+    width:100vw;
+    justify-content: space-around;
+    align-items: center;
+    font-size:30px;
+}
+a{
+    color:white;
+    text-decoration: none;
+}
+h1{
+    color:white;
+    font-size:100px;
+    text-align:center;
+    opacity: 30%;
+}
