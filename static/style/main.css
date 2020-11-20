@@ -34,6 +34,35 @@ body{
     align-items: center;
     font-size:30px;
 }
+.logowanie{
+    height:400px;
+    width:250px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    margin:auto;
+    text-align:center;
+    color:#06d6a0;
+}
+.logowanie input{
+    height:40px;
+    width:200px;
+    margin:10px;
+    color: #06d6a0;
+    border: 2px solid #06d6a0;
+    text-align:center;
+    background: #303030;
+    border-radius:50px;
+    outline:none;
+}
+.logowanie button{
+    background-color: #303030;
+    color: #06d6a0;
+    border: 2px solid #06d6a0;
+    width:150px;
+    height:30px;
+    margin-top:10px;
+}
 a{
     color:white;
     text-decoration: none;

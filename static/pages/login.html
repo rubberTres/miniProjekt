@@ -4,18 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../style/login.css" rel="stylesheet">
+    <link href="../style/main.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
-    <form action="/login" method="Post">
-        <input type="text" name="login">
-        <input type="password" name="password">
-        <button type="submit">
-            Klikaj
-        </button>
-    </form>
+    <nav>
+        <div class="top">
+            <a href="main">Main</a>
+            <a href="register">Rejestracja</a>
+            <a href="login">Logowanie</a>
+            <a href="admin">Admin</a>
+        </div>
+        <h1>Login Page</h1>
+    </nav>
+    <div class="logowanie">
+        <form action="/login" method="Post">
+            <input type="text" name="login" placeholder="Login">
+            <input type="password" name="password" placeholder="Hasło">
+            <button type="submit">
+                Zaloguj się
+            </button>
+        </form>
+    </div>
+
 </body>
 
 </html>

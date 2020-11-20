@@ -58,6 +58,10 @@ app.get("/:id", function (req, res) {
         case 'login':
             res.sendFile(path.join(__dirname + '/static/pages/login.html'))
             break
+        case 'logout':
+            login = false
+            res.redirect('main')
+            break
         case 'register':
             res.sendFile(path.join(__dirname + '/static/pages/register.html'))
             break
@@ -82,59 +86,64 @@ app.get("/:id", function (req, res) {
                 tabela += '</table>'
                 res.send(tabela)
             } else {
-                res.send("yyy, a może by się Pan zalogował?")
+                res.sendFile(path.join(__dirname + '/static/pages/nonLogged.html'))
             }
             break
         case 'gender':
-            users = (users.sort(function (a, b) {
-                return parseFloat(a.id) - parseFloat(b.id);
-            }));
-            let nav = '<a href="show">show</a> <a href="gender">gender</a> <a href="sort">sort</a> <a href="admin">admin</a>'
-            let tabelaK = '<table style="border:1px solid black">'
-            let tabelaM = tabelaK
-            for (let i = 0; i < users.length; i++) {
-                if (users[i].gender == 'kobieta') {
-                    let id = "<td>id: " + users[i].id + "</td>";
-                    let plec = "<td>płeć: " + users[i].gender + "</td>";
-                    tabelaK += "<tr>" + id + plec + "</tr>";
-                } else {
-                    let id = "<td>id: " + users[i].id + "</td>";
-                    let plec = "<td>płeć: " + users[i].gender + "</td>";
-                    tabelaM += "<tr>" + id + plec + "</tr>";
+            if (login) {
+                users = (users.sort(function (a, b) {
+                    return parseFloat(a.id) - parseFloat(b.id);
+                }));
+                let nav = '<a href="show">show</a> <a href="gender">gender</a> <a href="sort">sort</a> <a href="admin">admin</a>'
+                let tabelaK = '<table style="border:1px solid black">'
+                let tabelaM = tabelaK
+                for (let i = 0; i < users.length; i++) {
+                    if (users[i].gender == 'kobieta') {
+                        let id = "<td>id: " + users[i].id + "</td>";
+                        let plec = "<td>płeć: " + users[i].gender + "</td>";
+                        tabelaK += "<tr>" + id + plec + "</tr>";
+                    } else {
+                        let id = "<td>id: " + users[i].id + "</td>";
+                        let plec = "<td>płeć: " + users[i].gender + "</td>";
+                        tabelaM += "<tr>" + id + plec + "</tr>";
+                    }
                 }
+                let total = nav + tabelaK + '</table><br>' + tabelaM + '</table>'
+                res.send(total)
+            } else {
+                res.sendFile(path.join(__dirname + '/static/pages/nonLogged.html'))
             }
-            let total = nav + tabelaK + '</table><br>' + tabelaM + '</table>'
-            res.send(total)
             break
         case 'sort':
-            let tab = users;
-            if (req.query.sortowanie == 0) {
-                tab = (tab.sort(function (a, b) {
-                    return parseFloat(b.wiek) - parseFloat(a.wiek);
-                }));
-            } else {
-                tab = (tab.sort(function (a, b) {
-                    return parseFloat(a.wiek) - parseFloat(b.wiek);
-                }));
-            }
-            let sortowanie = '<form action ="/sort" onchange="this.submit()" style="margin-left: 20px;"><input type="radio" name="sortowanie" value = "1">rosnaco<input type="radio" name="sortowanie" value = "0" style="margin-left: 20px">malejaco</form>'
-            let nav1 = '<a href="show">show</a> <a href="gender">gender</a> <a href="sort">sort</a> <a href="admin">admin</a>'
-            let tabela = '<table style="border: 1px solid black;">'
-            for (let i = 0; i < users.length; i++) {
-                tabela += '<tr> <td> id: ' + users[i].id + '</td> <td>Login: ' + users[i].login + ' - ' + users[i].password + '</td>'
-                if (users[i].uczen == 'on') {
-                    tabela += '<td>Uczeń: <input type="checkbox" checked disabled> </td>'
+            if (login) {
+                let tab = users;
+                if (req.query.sortowanie == 0) {
+                    tab = (tab.sort(function (a, b) {
+                        return parseFloat(b.wiek) - parseFloat(a.wiek);
+                    }));
                 } else {
-                    tabela += '<td>Uczeń: <input type="checkbox" disabled> </td>'
+                    tab = (tab.sort(function (a, b) {
+                        return parseFloat(a.wiek) - parseFloat(b.wiek);
+                    }));
                 }
-                tabela += '<td> Wiek: ' + users[i].wiek + '</td> <td> Płeć: ' + users[i].gender + '</td>'
+                let sortowanie = '<form action ="/sort" onchange="this.submit()" style="margin-left: 20px;"><input type="radio" name="sortowanie" value = "1">rosnaco<input type="radio" name="sortowanie" value = "0" style="margin-left: 20px">malejaco</form>'
+                let nav1 = '<a href="show">show</a> <a href="gender">gender</a> <a href="sort">sort</a> <a href="admin">admin</a>'
+                let tabela = '<table style="border: 1px solid black;">'
+                for (let i = 0; i < users.length; i++) {
+                    tabela += '<tr> <td> id: ' + users[i].id + '</td> <td>Login: ' + users[i].login + ' - ' + users[i].password + '</td>'
+                    if (users[i].uczen == 'on') {
+                        tabela += '<td>Uczeń: <input type="checkbox" checked disabled> </td>'
+                    } else {
+                        tabela += '<td>Uczeń: <input type="checkbox" disabled> </td>'
+                    }
+                    tabela += '<td> Wiek: ' + users[i].wiek + '</td> <td> Płeć: ' + users[i].gender + '</td>'
+                }
+                tabela += '</table>'
+                let totalSort = nav1 + sortowanie + tabela
+                res.send(totalSort)
+            } else {
+                res.sendFile(path.join(__dirname + '/static/pages/nonLogged.html'))
             }
-            tabela += '</table>'
-            let totalSort = nav1 + sortowanie + tabela
-            res.send(totalSort)
-
-
-
             break
         default:
             res.sendFile(path.join(__dirname + '/static/pages/none.html'))
