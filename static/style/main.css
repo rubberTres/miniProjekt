@@ -8,13 +8,14 @@ body{
     font-family: 'Roboto Mono', monospace;
 }
 .top{
-    height:200px;
+    min-height:100px;
     background:blue;
     display:flex;
     width:100vw;
     justify-content: space-around;
     align-items: center;
     font-size:50px;
+    flex-wrap:wrap;
 }
 .topNonLogged{
     height:200px;
@@ -35,14 +36,22 @@ body{
     font-size:30px;
 }
 .logowanie{
-    height:400px;
-    width:250px;
+    height:100vh;
+    width:100vw;
     display:flex;
     flex-direction:column;
     align-items: center;
+    justify-content: center;
     margin:auto;
     text-align:center;
     color:#06d6a0;
+}
+.logowanie form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 .logowanie input{
     height:40px;
@@ -62,6 +71,7 @@ body{
     width:150px;
     height:30px;
     margin-top:10px;
+    border-radius: 10px;
 }
 a{
     color:white;
@@ -72,4 +82,82 @@ h1{
     font-size:100px;
     text-align:center;
     opacity: 30%;
+}
+.text{
+    font-size:50px;
+    margin-bottom: 50px;
+}
+.container{
+    height:100vh;
+    width:100vw;
+}
+.container .date{
+    height:10%;
+    width:100vw;
+    font-size:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .notes {
+    height:90%;
+    width:100vw;
+    display:flex;
+    justify-content: center;
+}
+.box{
+    height:800px;
+    width:1000px; 
+    display: flex;
+}
+.ujemne, .dodatnie{
+    height:100%;
+    width:50%;
+    border-left:2px solid #2a9d8f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.ujemneTop, .dodatnieTop{
+    height:50px;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.ujemneTop input, .dodatnieTop input{
+    background: transparent;
+    padding:7px;
+    border:2px solid #f4a261;
+    border-radius:5px;
+    outline:none;
+    margin-top:10px;
+    color:grey;   
+}
+#ujemneInput, #dodatnieInput{
+    width:50%;
+}
+
+#kwota1, #kwota2{
+    width:20%;
+}
+
+.ujemneBottom, .dodatnieBottom{
+    height:90%;
+    width:100%;
+    margin-top:30px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.ujemneBottom p , .dodatnieBottom p {
+    display:block;
+    margin-top:5px;
+    margin-left:10px;
+    color:white;
+}
+#btn1:hover, #btn2:hover{
+    cursor: pointer;
 }

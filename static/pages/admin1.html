@@ -7,26 +7,39 @@
     <link href="../style/main.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="../scripts/script.js"></script>
     <title>Main</title>
 </head>
 
 <body>
-    <nav>
-        <div class="top">
-            <a href="main">Main</a>
-            <a href="register">Rejestracja</a>
-            <a href="login">Logowanie</a>
-            <a href="admin">Admin</a>
-            <a href="logout">Logout</a>
-        </div>
-        <div class="sgs">
-            <a href="sort">Sort</a>
-            <a href="gender">Gender</a>
-            <a href="show">Show</a>
-        </div>
-        <h1>Admin Page</h1>
-    </nav>
+    <div class="container">
+        <div class="date">
 
+        </div>
+        <div class="notes">
+            <div class="box">
+                <div class="ujemne">
+                    <div class="ujemneTop">
+                        <input type="text" placeholder="Kwota..." id="kwota1">
+                        <input type="text" placeholder="Obiekt..." id="ujemneInput">
+                        <input type="submit" id="btn1" value="  Dodaj  ">
+                    </div>
+                    <div class="ujemneBottom">
+                    </div>
+                </div>
+                <div class="dodatnie">
+                    <div class="dodatnieTop">
+                        <input type="text" placeholder="Kwota..." id="kwota2">
+                        <input type="text" placeholder="Obiekt..." id="dodatnieInput">
+                        <input type="submit" id="btn2" value="  Dodaj  ">
+                    </div>
+                    <div class="dodatnieBottom">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
